@@ -59,7 +59,7 @@ class _DestiniBodyState extends State<DestiniBody> {
           Expanded(
             flex: 1,
             child: Container(
-              color: Colors.blue,
+              color: Colors.red,
               margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               child: TextButton(
                 onPressed: () {
@@ -79,20 +79,23 @@ class _DestiniBodyState extends State<DestiniBody> {
           ),
           Expanded(
             flex: 1,
-            child: Container(
-              color: Colors.red,
-              margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-              child: TextButton(
-                onPressed: () {
-                  setState(() {
-                    storyBrain.nextStory(2);
-                  });
-                },
-                child: Text(
-                  storyBrain.getChoice2(),
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15
+            child: Visibility(
+              visible: storyBrain.buttonShouldBeVisible(),
+              child: Container(
+                color: Colors.blue,
+                margin: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      storyBrain.nextStory(2);
+                    });
+                  },
+                  child: Text(
+                    storyBrain.getChoice2(),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15
+                    ),
                   ),
                 ),
               ),
